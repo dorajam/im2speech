@@ -12,10 +12,23 @@ navigator.mediaDevices.getUserMedia( {video: true})
     }).catch((err) => {console.log(err);});
 
 
-// Trigger photo take
+// Take photo
 document.getElementById("snap").addEventListener("click", function() {
 	context2.drawImage(video, 0, 0, 640, 480);
 });
+
+// Send pixels to Flask backend
+$(function() {
+    $('snap').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/snap', {
+        pixel_array: $('canvas2').val(),
+      }, function(data) {
+        $("#result").text(data.result);   // result = function(im2speech) returns audio signal
+      });
+      return false;
+    });
+  });
+
 
 // creates new canvas element for the photo taken
 function convertImageToCanvas(image) {
@@ -31,3 +44,4 @@ function canvasToImage(canvas) {
     image.src = canvas.toDataURL("image/png");
     return image;
 }
+
