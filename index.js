@@ -1,7 +1,6 @@
 
 var canvas = document.getElementById('canvas');
 var canvas2 = document.getElementById('canvas2');
-var context = canvas.getContext('2d');
 var context2 = canvas2.getContext('2d');
 var video = document.getElementById('video');
 
@@ -14,13 +13,14 @@ navigator.mediaDevices.getUserMedia( {video: true})
 
 // Take photo
 document.getElementById("snap").addEventListener("click", function() {
-	context2.drawImage(video, 0, 0, 640, 480);
+	context2.drawImage(video, 0, 0, 320, 240);
 });
 
 // Send pixels to Flask backend
 $(function() {
     $('snap').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/snap', {
+        console.log('hello');
+      $.getJSON($SCRIPT_ROOT + '/snap_a_signal', {
         pixel_array: $('canvas2').val(),
       }, function(data) {
         $("#result").text(data.result);   // result = function(im2speech) returns audio signal
