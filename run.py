@@ -1,17 +1,16 @@
 # Flask back-end: take image -> get text -> generate audio signals => send back to client
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, redirect
 app = Flask(__name__)
 
-@app.route('/snap_a_signal')
- def process_signal():
+@app.route('/snap_a_signal', methods=["POST", "GET"])
+def process_signal():
     pixels = request.args.get('canvas2', 0, type=int)
     return jsonify(result=im2speech(pixels))
 
 @app.route('/')
-def index():
-    return render_template('index.html')
-
+def root():
+    return redirect('/index.html')
 
 def im2speech(pixels):
     print type(pixels)

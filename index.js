@@ -18,10 +18,10 @@ document.getElementById("snap").addEventListener("click", function() {
 
 // Send pixels to Flask backend
 $(function() {
-    $('snap').bind('click', function() {
+    $('#snap').bind('#click', function() {
         console.log('hello');
       $.getJSON($SCRIPT_ROOT + '/snap_a_signal', {
-        pixel_array: $('canvas2').val(),
+        pixel_array: $('#canvas2').val(),
       }, function(data) {
         $("#result").text(data.result);   // result = function(im2speech) returns audio signal
       });
