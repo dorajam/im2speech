@@ -10,10 +10,10 @@ def process_signal():
 
 @app.route('/')
 def root():
-    return redirect('/index.html')
+    return render_template('index.html')
 
 def im2speech(pixels):
-    print type(pixels)
+    return pixels
 
 if __name__ == "__main__":
     app.run(debug=True)
