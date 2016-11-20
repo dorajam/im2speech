@@ -33,7 +33,11 @@ function send_canvas_ctx() {
     		'Content-Type': 'application/json'
   		},
   		body: JSON.stringify({
+<<<<<<< HEAD
     		data: $('#canvas2').getContext('2d')
+=======
+    		data: JSON.stringify(context2)
+>>>>>>> 466920bcf1c0bc2518d436680ae0c62033438f83
   		})
 	}).then((response) => response.json()).then((json) => console.log(json))
 }
