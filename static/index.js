@@ -4,11 +4,26 @@ var canvas2 = document.getElementById('canvas2');
 var context2 = canvas2.getContext('2d');
 var video = document.getElementById('video');
 
-navigator.mediaDevices.getUserMedia( {video: true})
-    .then((stream) => {
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-    }).catch((err) => {console.log(err);});
+navigator.getUserMedia = (navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.mediaDevices.gevigator.msGetUserMedia);
+
+if (navigator.getUserMedia) {
+       console.log('getUserMedia supported.');
+          navigator.getUserMedia (
+          {video:true}
+
+function(stream) {
+        video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+        video.onloadedmetadata = function(e) {
+            video.play();
+            video.muted = 'true';
+        }
+    //.then((stream) => {
+      //  video.src = window.URL.createObjectURL(stream);
+       // video.play();
+    //}).catch((err) => {console.log(err);});
 
 
 // Take photo
