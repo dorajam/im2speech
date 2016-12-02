@@ -1,9 +1,10 @@
-
+from StringIO import StringIO
 import numpy as np
 from numpy import array
 from skimage.measure import block_reduce
 import matplotlib.pyplot as plt
 import scipy
+from base64 import decodestring
 
 try:
     import Image
@@ -17,13 +18,9 @@ app = Flask(__name__)
 
 @app.route('/snap_a_signal', methods=["POST", "GET"])
 def process_signal():
-    pixels = request.get_json()
-    print type(pixels)
-    print pixels
+    pixels = request.get_json()['data']
 
-    #pixels = request.args.get('canvas2', 0, type=int)
-    # return jsonify(result=im2speech(pixels))
-    return '0'
+    return jsonify(result=im2speech(pixels))
 
 
 @app.route('/')
@@ -32,8 +29,11 @@ def root():
 
 
 def im2speech(pixels):
-    print pytesseract.image_to_string(Image.open(pixels))
-
+    fh = open("imageToSave.png", "wb")
+    fh.write(str(pixels.split(",")[1].decode('base64')))
+    fh.close()
+    text =  pytesseract.image_to_string(Image.open('imageToSave.png'))
+    return text
 
 if __name__ == "__main__":
     app.run(debug=True)

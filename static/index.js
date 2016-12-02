@@ -13,7 +13,8 @@ navigator.mediaDevices.getUserMedia( {video: true})
 
 // Take photo
 document.getElementById("snap").addEventListener("click", function() {
-	context2.drawImage(video, 0, 0, 320, 240);
+	context2.drawImage(video, 0, 0, 420, 340);
+    send_canvas_ctx() 
 });
 
 function ping() {
@@ -27,17 +28,14 @@ function ping() {
 
 // Send pixels to Flask backend
 function send_canvas_ctx() {
+    input_data = canvas2.toDataURL('image/png'); 
 	window.fetch('/snap_a_signal', {
   		method: 'POST',
   		headers: {
     		'Content-Type': 'application/json'
   		},
   		body: JSON.stringify({
-<<<<<<< HEAD
-    		data: $('#canvas2').getContext('2d')
-=======
-    		data: JSON.stringify(context2)
->>>>>>> 466920bcf1c0bc2518d436680ae0c62033438f83
+    		data: input_data
   		})
 	}).then((response) => response.json()).then((json) => console.log(json))
 }
