@@ -1,6 +1,35 @@
-body {
-    margin: 32px;
+body,*{
+    margin: 0 auto;
+	padding: 0 0 0 0;
     font-size: 14px;
+    max-width: 1200px;
+	text-align: center;
+}
+body, a, img, table, tr, td {
+    text-decoration: none;
+}
+table {
+	width:100%;
+}
+.head {
+	position: relative;
+	padding-bottom: 5px;
+	height: 50px;
+	width: 100%;
+	margin: 0 0 0 0;
+}
+.icon {
+	float: left;
+	opacity: 0.4;
+	height: 100%;
+}
+.icon img {
+	margin: 20px 5px 20px 5px ;
+}
+
+.icon img:hover{
+	opacity: 0.7;
+    filter: alpha(opacity=60);
 }
 
 video {
@@ -24,6 +53,82 @@ video {
     padding:12px 12px 12px 12px;
 }
 
-#button {
-    margin: 0 0 0 125px;
+.head {
+	position: relative;
+	padding-bottom: 5px;
+	height: 50px;
+	width: 100%;
+	margin: 0 0 0 0;
+}
+
+.icon {
+	float: left;
+	opacity: 0.4;
+	height: 100%;
+}
+.icon img {
+	margin: 20px 5px 20px 5px ;
+}
+
+.icon img:hover{
+	opacity: 0.7;
+    filter: alpha(opacity=60);
+}
+.menu {
+	display: inline-block;
+	text-align: center;
+	padding: 1%;
+	color: rgb(102, 102, 102);
+	letter-spacing: 1px;
+	font-style: normal;
+	position: relative;
+	margin-bottom: 20px;
+	font-family: "Andale Mono", "Lucida Console", "Courier New", monospace;
+}
+.menu:hover{
+	opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+.text {
+	text-align: center;
+	color: #767572;
+	font-family: 'indie flower';
+	font-weight:bold;
+	margin: 0 auto;
+	padding: 1%;
+	width: 700px;
+}
+.post-footer {
+	display: block;
+	max-width: 596px;
+	height: 150px;
+	position: relative;
+	margin:auto;
+}
+
+.post-footer::after {
+	content:"";
+	background-image: url("assets/foot.png");
+	background-position: center;
+	margin: 70px;
+	height: 35px;
+	position: absolute;
+	background-size: contain;
+	background-repeat: no-repeat;
+	left:0;
+	right:0;
+	top:0;
+}
+
+#res {
+	font-family: 'indie flower';
+	font-weight:bold;
+	font-size: 20px;
+	color: #9a9997;
+	margin: auto;
+	-webkit-animation: fadein 6s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 6s; /* Firefox < 16 */
+        -ms-animation: fadein 6s; /* Internet Explorer */
+         -o-animation: fadein 6s; /* Opera < 12.1 */
+            animation: fadein 6s;
 }

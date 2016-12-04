@@ -1,5 +1,3 @@
-
-var canvas = document.getElementById('canvas');
 var canvas2 = document.getElementById('canvas2');
 var context2 = canvas2.getContext('2d');
 var video = document.getElementById('video');
@@ -10,26 +8,34 @@ navigator.getUserMedia = (navigator.getUserMedia ||
                           navigator.mediaDevices.gevigator.msGetUserMedia);
 
 if (navigator.getUserMedia) {
-       console.log('getUserMedia supported.');
-          navigator.getUserMedia (
-          {video:true}
+    console.log('getUserMedia supported.');
+	$("#res").hide();
+	navigator.getUserMedia (
+		{video:true},
 
-function(stream) {
-        video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
-        video.onloadedmetadata = function(e) {
-            video.play();
-            video.muted = 'true';
-        }
-    //.then((stream) => {
-      //  video.src = window.URL.createObjectURL(stream);
-       // video.play();
-    //}).catch((err) => {console.log(err);});
+		// Success callback
+		function(stream) {
+			video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+			video.onloadedmetadata = function(e) {
+				video.play();
+				video.muted = 'true';
+			}
+		},
+		// Error callback
+		function(err) {
+			console.log(err);
+		}
+	);
+} else {
+	console.log('getUserMedia not supported on your browser!');
+}
 
 
 // Take photo
 document.getElementById("snap").addEventListener("click", function() {
 	context2.drawImage(video, 0, 0, 420, 340);
-    send_canvas_ctx() 
+    send_canvas_ctx();
+	$("#res").show();
 });
 
 function ping() {
@@ -43,7 +49,7 @@ function ping() {
 
 // Send pixels to Flask backend
 function send_canvas_ctx() {
-    input_data = canvas2.toDataURL('image/png'); 
+    input_data = canvas2.toDataURL('image/png');
 	window.fetch('/snap_a_signal', {
   		method: 'POST',
   		headers: {
@@ -53,16 +59,6 @@ function send_canvas_ctx() {
     		data: input_data
   		})
 	}).then((response) => response.json()).then((json) => console.log(json))
-}
-
-
-// creates new canvas element for the photo taken
-function convertImageToCanvas(image) {
-    var canvas = document.createElement("canvas");
-    canvas.width = image.width;
-    canvas.height = image.height
-    canvas.getContext("2d").drawImage(image,0,0);
-    return canvas;
 }
 
 function canvasToImage(canvas) {
