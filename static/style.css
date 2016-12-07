@@ -1,4 +1,4 @@
-body,*{
+body{
     margin: 0 auto;
 	padding: 0 0 0 0;
     font-size: 14px;
@@ -41,6 +41,7 @@ video {
     border: 1px;
     border-color: grey;
     border-style: dotted;
+	margin: auto;
 }
 
 #cam {
@@ -97,6 +98,7 @@ video {
 	margin: 0 auto;
 	padding: 1%;
 	width: 700px;
+	margin-top: 32px;
 }
 .post-footer {
 	display: block;
@@ -131,4 +133,17 @@ video {
         -ms-animation: fadein 6s; /* Internet Explorer */
          -o-animation: fadein 6s; /* Opera < 12.1 */
             animation: fadein 6s;
+}
+.main {
+	width:71vw;
+	margin:auto;
+}
+#about {
+	font-size: 15px;
+	font-family: "Andale Mono", "Lucida Console", "Courier New", monospace;
+	display: inline-block;
+	text-align: left;
+	color: rgb(102, 102, 102);
+	font-style: normal;
+	position: relative;	
 }
