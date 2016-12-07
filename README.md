@@ -1,5 +1,8 @@
 ## Listen to your eyes!
 
+
+***!! This won't run on insecure origins (http) because of the security problems with JavaScript's WebAudio API. To test the app, please run the following: `python server.py`***
+
 This is a webapp that uses [wavenets](https://arxiv.org/pdf/1609.03499.pdf) - a text2speech model - that generates audio signals based on some text input from an image or video frame!    
 1. Run the web app by ```python run.py```    
 2. Take a snap (this gets fed into the network)    
