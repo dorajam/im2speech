@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 import scipy
 from base64 import decodestring
 
+import ssl
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('fullchain.pem', 'privkey.pem')
+
 try:
     import Image
 except ImportError:
@@ -36,4 +40,5 @@ def im2speech(pixels):
     return text
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    context = ('fulchain.pem', 'privkey.pem')
+    app.run(host='0.0.0.0', port=8000, ssl_context=context)
