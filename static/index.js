@@ -12,7 +12,7 @@ navigator.getUserMedia = (navigator.getUserMedia ||
 if (navigator.getUserMedia) {
        console.log('getUserMedia supported.');
           navigator.getUserMedia (
-          {video:true}
+          {video:true})}
 
 function(stream) {
         video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
@@ -29,7 +29,7 @@ function(stream) {
 // Take photo
 document.getElementById("snap").addEventListener("click", function() {
 	context2.drawImage(video, 0, 0, 420, 340);
-    send_canvas_ctx() 
+    send_canvas_ctx()
 });
 
 function ping() {
@@ -43,7 +43,7 @@ function ping() {
 
 // Send pixels to Flask backend
 function send_canvas_ctx() {
-    input_data = canvas2.toDataURL('image/png'); 
+    input_data = canvas2.toDataURL('image/png');
 	window.fetch('/snap_a_signal', {
   		method: 'POST',
   		headers: {
