@@ -1,4 +1,4 @@
-## Listen to your eyes!
+## Say what you see!
 
 
 ***!! This won't run on insecure origins (http) because of the security problems with JavaScript's WebAudio API. To test the app, please run the following: `python server.py`***
