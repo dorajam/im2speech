@@ -11,7 +11,7 @@ itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
 networkx==1.11
-numpy==1.11.2
+numpy==1.21.0
 pathlib2==2.1.0
 pbr==1.10.0
 pexpect==4.2.1
